@@ -6,7 +6,7 @@ export class GuiModel {
 
     private _guiModel = {
         "application": {
-            "title": "Requirements Engineering Friend Tracker",
+            "title": "Lorens Friend Tracker",
             "formList": [
                 {
                     "id": "FriendForm",
@@ -26,6 +26,21 @@ export class GuiModel {
                             "name": "FirstName",
                             "width": 1,
                             "required": true
+                        },
+                        {
+                            "id": "nickname",
+                            "type": "text",
+                            "name": "Nickname",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "group",
+                            "type": "autocomplete",
+                            "name": "Group",
+                            "url": "/group",
+                            "form": "GroupForm",
+                            "width": 2,
                         },
                         {
                             "id":   "location",
@@ -72,6 +87,32 @@ export class GuiModel {
                             "id": "name",
                             "type": "text",
                             "name": "LocationName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                 "id": "GroupForm",
+                    "title": "Group",
+                    "url": "/Group",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "GroupName",
                             "width": 2,
                             "required": true
                         },
@@ -138,6 +179,13 @@ export class GuiModel {
                             "color": "yellow",
                             "page": "locationspage",
                         },
+                        {
+                            "type": "button",
+                            "name": "Groups",
+                            "icon": "fa-weixin",
+                            "color": "wisteria",
+                            "page": "groupspage",
+                        },
                     ]
                 },
                 {
@@ -161,10 +209,44 @@ export class GuiModel {
                             "color": "blue",
                             "search": true,
                             "url": "/friend",
+                            "page": "FApage",
+                        },
+                    ]
+                },
+                {
+                    "id": "FApage",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+							{
+                            "type": "button",
+                            "name": "EditFriend",
+                            "icon": "fa-user",
+                            "color": "green",
+                            "search": true,
+							"url": "/friend",
                             "form": {
                                 "form": "FriendForm"
-                            }
+                            },
+							},
+							 {
+                            "type": "button",
+                            "name": "AddActivity",
+                            "icon": "fa-address-book",
+                            "color": "green",
+                            "form": {
+                                "form": "AddActivityForm"
+                            },
                         },
+                        {
+                            "type": "list",
+                            "icon": "fa-user",
+                            "color": "green",
+                            "search": true,
+                            "url": "/friend/:friendKey/activity",
+                        },
+
                     ]
                 },
                 {
@@ -192,6 +274,35 @@ export class GuiModel {
                             "form": {
                                 "form": "LocationForm"
                             }
+                        },
+                    ]
+                },
+                {
+                    "id": "groupspage",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewGroup",
+                            "icon": "fa-weixin",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "GroupForm"
+                                }
+                        },
+                         {
+                            "type": "list",
+                            "icon": "fa-weixin",
+                            "color": "wisteria",
+                            "search": true,
+                            "url": "/group",
+                            "width": 2,
+                            "form": {
+                                "form": "GroupForm"
+                                }
                         },
                     ]
                 },
